@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <base href="../../../" />
+    <link rel="stylesheet" href="dmdoc.css" />
+    <title>&#x2F;obj&#x2F;item&#x2F;bodypart&#x2F;r_leg - &#x2F;tg&#x2F; Station 13</title>
+</head>
+<body>
+<header>
+    <a href="index.html">&#x2F;tg&#x2F; Station 13</a> -
+    <a href="index.html#modules">Modules</a> -
+    <a href="index.html#types">Types</a>
+ &mdash; <a href="obj/item/bodypart/r_leg.html#var">Var Details</a> - <a href="obj/item/bodypart/r_leg.html#proc">Proc Details</a></header>
+<main>
+<h1>r_leg <aside>/<a href="obj.html">obj</a>/<a href="obj/item.html">item</a>/<a href="obj/item/bodypart.html">bodypart</a>/<a href="obj/item/bodypart/r_leg.html">r_leg</a></aside>
+        
+    
+            <a href="https://github.com/UPTherac/Gameserver/blob/488a859807ce909376ee54e24fe157607f5860e1/code/modules/surgery/bodyparts/parts.dm#L351">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;surgery&#x2F;bodyparts&#x2F;parts.dm 351"/></a></h1>
+
+<table class="summary" cellspacing="0"><tr><td colspan="2"><h2>Vars</h2></td></tr>
+            <tr><th><a href="obj/item/bodypart/r_leg.html#var/left_leg_mask_cache">left_leg_mask_cache</a></th><td>The associated list of all the left leg mask keys associated to their cached left leg masks.
+It's static, so it's shared between all the left legs there is. Be careful.
+Why? Both legs share the same layer for rendering, and since we don't want to do redraws on
+each dir changes, we're doing it with a mask instead, which we cache for efficiency reasons.</td></tr>
+            <tr><th><a href="obj/item/bodypart/r_leg.html#var/left_leg_mask_key">left_leg_mask_key</a></th><td>We store this here to generate our icon key more easily.</td></tr><tr><td colspan="2"><h2>Procs</h2></td></tr>
+            <tr><th><a href="obj/item/bodypart/r_leg.html#proc/generate_masked_right_leg">generate_masked_right_leg</a></th><td>This proc serves as a way to ensure that right legs don't overlap above left legs when their dir is WEST on a mob.</td></tr>
+            <tr><th><a href="obj/item/bodypart/r_leg.html#proc/on_owner_paralysis_gain">on_owner_paralysis_gain</a></th><td>Proc to react to the owner gaining the TRAIT_PARALYSIS_R_LEG trait.</td></tr>
+            <tr><th><a href="obj/item/bodypart/r_leg.html#proc/on_owner_paralysis_loss">on_owner_paralysis_loss</a></th><td>Proc to react to the owner losing the TRAIT_PARALYSIS_R_LEG trait.</td></tr></table>
+    <h2 id="var">Var Details</h2><h3 id="var/left_leg_mask_cache"><aside class="declaration">var </aside>left_leg_mask_cache
+            <aside>&ndash; /static/list</aside>
+        
+    
+            <a href="https://github.com/UPTherac/Gameserver/blob/488a859807ce909376ee54e24fe157607f5860e1/code/modules/surgery/bodyparts/parts.dm#L375">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;surgery&#x2F;bodyparts&#x2F;parts.dm 375"/></a></h3>
+        <p>The associated list of all the left leg mask keys associated to their cached left leg masks.
+It's static, so it's shared between all the left legs there is. Be careful.
+Why? Both legs share the same layer for rendering, and since we don't want to do redraws on
+each dir changes, we're doing it with a mask instead, which we cache for efficiency reasons.</p><h3 id="var/left_leg_mask_key"><aside class="declaration">var </aside>left_leg_mask_key
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/UPTherac/Gameserver/blob/488a859807ce909376ee54e24fe157607f5860e1/code/modules/surgery/bodyparts/parts.dm#L370">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;surgery&#x2F;bodyparts&#x2F;parts.dm 370"/></a></h3>
+        <p>We store this here to generate our icon key more easily.</p><h2 id="proc">Proc Details</h2><h3 id="proc/generate_masked_right_leg"><aside class="declaration">proc </aside>generate_masked_right_leg<aside>(right_leg_icon_file, right_leg_icon_state, image_dir) 
+        
+    
+            <a href="https://github.com/UPTherac/Gameserver/blob/488a859807ce909376ee54e24fe157607f5860e1/code/modules/mob/living/carbon/carbon_update_icons.dm#L428">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;carbon&#x2F;carbon_update_icons.dm 428"/></a></aside>
+        </h3>
+        <p>This proc serves as a way to ensure that right legs don't overlap above left legs when their dir is WEST on a mob.</p>
+<p>It's using the <code>left_leg_mask_cache</code> to avoid generating a new mask when unnecessary, which means that there needs to be one
+for the proc to return anything.</p>
+<p>Arguments:</p>
+<ul>
+<li>right_leg_icon_file - The icon file of the right leg overlay we're trying to apply a mask to.</li>
+<li>right_leg_icon_state - The icon_state of the right leg overlay we're trying to apply a mask to.</li>
+<li>image_dir - The direction applied to the icon, only meant for when the leg is dropped, so it remains
+facing SOUTH all the time.</li>
+</ul>
+<p>Returns the <code>/image</code> of the right leg that was masked, or <code>null</code> if the mask didn't exist.</p><h3 id="proc/on_owner_paralysis_gain"><aside class="declaration">proc </aside>on_owner_paralysis_gain<aside>(/<a href="mob.html">mob</a>/<a href="mob/living.html">living</a>/<a href="mob/living/carbon.html">carbon</a>/source) 
+        
+    
+            <a href="https://github.com/UPTherac/Gameserver/blob/488a859807ce909376ee54e24fe157607f5860e1/code/modules/surgery/bodyparts/parts.dm#L400">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;surgery&#x2F;bodyparts&#x2F;parts.dm 400"/></a></aside>
+        </h3>
+        <p>Proc to react to the owner gaining the TRAIT_PARALYSIS_R_LEG trait.</p><h3 id="proc/on_owner_paralysis_loss"><aside class="declaration">proc </aside>on_owner_paralysis_loss<aside>(/<a href="mob.html">mob</a>/<a href="mob/living.html">living</a>/<a href="mob/living/carbon.html">carbon</a>/source) 
+        
+    
+            <a href="https://github.com/UPTherac/Gameserver/blob/488a859807ce909376ee54e24fe157607f5860e1/code/modules/surgery/bodyparts/parts.dm#L408">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;surgery&#x2F;bodyparts&#x2F;parts.dm 408"/></a></aside>
+        </h3>
+        <p>Proc to react to the owner losing the TRAIT_PARALYSIS_R_LEG trait.</p></main>
+<footer>
+    pariah.dme
+    <a href="https://github.com/UPTherac/Gameserver/tree/488a859807ce909376ee54e24fe157607f5860e1">488a859</a>
+        (master) &mdash; <a href="https://github.com/SpaceManiac/SpacemanDMM/blob/master/src/dmdoc/README.md">dmdoc 1.4.1</a></footer>
+</body>
+</html>

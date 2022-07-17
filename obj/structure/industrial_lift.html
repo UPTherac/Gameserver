@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <base href="../../" />
+    <link rel="stylesheet" href="dmdoc.css" />
+    <title>&#x2F;obj&#x2F;structure&#x2F;industrial_lift - &#x2F;tg&#x2F; Station 13</title>
+</head>
+<body>
+<header>
+    <a href="index.html">&#x2F;tg&#x2F; Station 13</a> -
+    <a href="index.html#modules">Modules</a> -
+    <a href="index.html#types">Types</a>
+ &mdash; <a href="obj/structure/industrial_lift.html#proc">Proc Details</a></header>
+<main>
+<h1>industrial_lift <aside>/<a href="obj.html">obj</a>/<a href="obj/structure/industrial_lift.html">structure/industrial_lift</a></aside>
+        
+    
+            <a href="https://github.com/UPTherac/Gameserver/blob/488a859807ce909376ee54e24fe157607f5860e1/code/game/objects/structures/industrial_lift.dm#L146">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;objects&#x2F;structures&#x2F;industrial_lift.dm 146"/></a></h1>
+
+<table class="summary" cellspacing="0"><tr><td colspan="2"><h2>Procs</h2></td></tr>
+            <tr><th><a href="obj/structure/industrial_lift.html#proc/GracefullyBreak">GracefullyBreak</a></th><td>Signal for when the tram runs into a field of which it cannot go through.
+Stops the train's travel fully, sends a message, and destroys the train.
+Arguments:
+bumped_atom - The atom this tram bumped into</td></tr>
+            <tr><th><a href="obj/structure/industrial_lift.html#proc/check_menu">check_menu</a></th><td>Proc to ensure that the radial menu closes when it should.
+Arguments:</td></tr>
+            <tr><th><a href="obj/structure/industrial_lift.html#proc/show_fluff_message">show_fluff_message</a></th><td>Shows a message indicating that the lift has moved up or down.
+Arguments:</td></tr>
+            <tr><th><a href="obj/structure/industrial_lift.html#proc/use">use</a></th><td>handles any special interactions objects could have with the lift/tram, handled on the item itself</td></tr></table><h2 id="proc">Proc Details</h2><h3 id="proc/GracefullyBreak"><aside class="declaration">proc </aside>GracefullyBreak<aside>(/<a href="atom.html">atom</a>/bumped_atom) 
+        
+    
+            <a href="https://github.com/UPTherac/Gameserver/blob/488a859807ce909376ee54e24fe157607f5860e1/code/game/objects/structures/industrial_lift.dm#L214">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;objects&#x2F;structures&#x2F;industrial_lift.dm 214"/></a></aside>
+        </h3>
+        <p>Signal for when the tram runs into a field of which it cannot go through.
+Stops the train's travel fully, sends a message, and destroys the train.
+Arguments:
+bumped_atom - The atom this tram bumped into</p><h3 id="proc/check_menu"><aside class="declaration">proc </aside>check_menu<aside>(/<a href="mob.html">mob</a>/user, starting_loc) 
+        
+    
+            <a href="https://github.com/UPTherac/Gameserver/blob/488a859807ce909376ee54e24fe157607f5860e1/code/game/objects/structures/industrial_lift.dm#L364">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;objects&#x2F;structures&#x2F;industrial_lift.dm 364"/></a></aside>
+        </h3>
+        <p>Proc to ensure that the radial menu closes when it should.
+Arguments:</p>
+<ul>
+<li>user - The person that opened the menu.</li>
+<li>starting_loc - The location of the lift when the menu was opened, used to prevent the menu from being interacted with after the lift was moved by someone else.</li>
+</ul>
+<p>Returns:</p>
+<ul>
+<li>boolean, FALSE if the menu should be closed, TRUE if the menu is clear to stay opened.</li>
+</ul><h3 id="proc/show_fluff_message"><aside class="declaration">proc </aside>show_fluff_message<aside>(going_up, /<a href="mob.html">mob</a>/user) 
+        
+    
+            <a href="https://github.com/UPTherac/Gameserver/blob/488a859807ce909376ee54e24fe157607f5860e1/code/game/objects/structures/industrial_lift.dm#L399">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;objects&#x2F;structures&#x2F;industrial_lift.dm 399"/></a></aside>
+        </h3>
+        <p>Shows a message indicating that the lift has moved up or down.
+Arguments:</p>
+<ul>
+<li>going_up - Boolean on whether or not we're going up, to adjust the message appropriately.</li>
+<li>user - The mob that caused the lift to move, for the visible message.</li>
+</ul><h3 id="proc/use"><aside class="declaration">proc </aside>use<aside>(/<a href="mob.html">mob</a>/<a href="mob/living.html">living</a>/user) 
+        
+    
+            <a href="https://github.com/UPTherac/Gameserver/blob/488a859807ce909376ee54e24fe157607f5860e1/code/game/objects/structures/industrial_lift.dm#L313">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;objects&#x2F;structures&#x2F;industrial_lift.dm 313"/></a></aside>
+        </h3>
+        <p>handles any special interactions objects could have with the lift/tram, handled on the item itself</p></main>
+<footer>
+    pariah.dme
+    <a href="https://github.com/UPTherac/Gameserver/tree/488a859807ce909376ee54e24fe157607f5860e1">488a859</a>
+        (master) &mdash; <a href="https://github.com/SpaceManiac/SpacemanDMM/blob/master/src/dmdoc/README.md">dmdoc 1.4.1</a></footer>
+</body>
+</html>

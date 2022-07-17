@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <base href="../../" />
+    <link rel="stylesheet" href="dmdoc.css" />
+    <title>code&#x2F;__DEFINES&#x2F;mobs.dm - &#x2F;tg&#x2F; Station 13</title>
+</head>
+<body>
+<header>
+    <a href="index.html">&#x2F;tg&#x2F; Station 13</a> -
+    <a href="index.html#modules">Modules</a> -
+    <a href="index.html#types">Types</a>
+ &mdash; <a href="code/__DEFINES/mobs.html#define">Define Details</a></header>
+<main>
+<h1>code/__DEFINES/mobs.dm 
+            <a href="https://github.com/UPTherac/Gameserver/blob/488a859807ce909376ee54e24fe157607f5860e1/code/__DEFINES/mobs.dm">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;mobs.dm"/></a></h1>
+
+<table class="summary" cellspacing="0">
+        <tr><th><a href="code/__DEFINES/mobs.html#define/BLOOD_REGEN_FACTOR">BLOOD_REGEN_FACTOR</a></th><td>How efficiently humans regenerate blood.</td></tr>
+        <tr><th><a href="code/__DEFINES/mobs.html#define/BP_BLOCK_CHANGE_SPECIES">BP_BLOCK_CHANGE_SPECIES</a></th><td>Bodypart does not get replaced during set_species()</td></tr>
+        <tr><th><a href="code/__DEFINES/mobs.html#define/BODYTYPE_ORGANIC">BODYTYPE_ORGANIC</a></th><td>The limb is organic</td></tr>
+        <tr><th><a href="code/__DEFINES/mobs.html#define/BODYTYPE_ROBOTIC">BODYTYPE_ROBOTIC</a></th><td>The limb is robotic</td></tr>
+        <tr><th><a href="code/__DEFINES/mobs.html#define/BODYTYPE_HUMANOID">BODYTYPE_HUMANOID</a></th><td>The limb fits the human mold</td></tr>
+        <tr><th><a href="code/__DEFINES/mobs.html#define/BODYTYPE_DIGITIGRADE">BODYTYPE_DIGITIGRADE</a></th><td>The limb is digitigrade</td></tr>
+        <tr><th><a href="code/__DEFINES/mobs.html#define/BODYTYPE_MONKEY">BODYTYPE_MONKEY</a></th><td>The limb fits the monkey mold</td></tr>
+        <tr><th><a href="code/__DEFINES/mobs.html#define/BODYTYPE_SNOUTED">BODYTYPE_SNOUTED</a></th><td>The limb is snouted</td></tr>
+        <tr><th><a href="code/__DEFINES/mobs.html#define/BODYTYPE_SKRELL">BODYTYPE_SKRELL</a></th><td>The limb has skrelly bits</td></tr>
+        <tr><th><a href="code/__DEFINES/mobs.html#define/BODYTYPE_VOX_BEAK">BODYTYPE_VOX_BEAK</a></th><td>The limb is voxed</td></tr>
+        <tr><th><a href="code/__DEFINES/mobs.html#define/BODYTYPE_VOX_LEGS">BODYTYPE_VOX_LEGS</a></th><td>The limb is in the shape of a vox leg.</td></tr>
+        <tr><th><a href="code/__DEFINES/mobs.html#define/BODYTYPE_VOX_OTHER">BODYTYPE_VOX_OTHER</a></th><td>Vox limb that isnt a head or legs.</td></tr>
+        <tr><th><a href="code/__DEFINES/mobs.html#define/BODYTYPE_TESHARI">BODYTYPE_TESHARI</a></th><td>The limb is small and feathery</td></tr>
+        <tr><th><a href="code/__DEFINES/mobs.html#define/DIGITIGRADE_NEVER">DIGITIGRADE_NEVER</a></th><td>The species does not have digitigrade legs in generation.</td></tr>
+        <tr><th><a href="code/__DEFINES/mobs.html#define/DIGITIGRADE_OPTIONAL">DIGITIGRADE_OPTIONAL</a></th><td>The species can have digitigrade legs in generation</td></tr>
+        <tr><th><a href="code/__DEFINES/mobs.html#define/DIGITIGRADE_FORCED">DIGITIGRADE_FORCED</a></th><td>The species is forced to have digitigrade legs in generation.</td></tr>
+        <tr><th><a href="code/__DEFINES/mobs.html#define/HUMAN_BODY">HUMAN_BODY</a></th><td>Body type bitfields for allowed_animal_origin used to check compatible surgery body types (use NONE for no matching body type)</td></tr>
+        <tr><th><a href="code/__DEFINES/mobs.html#define/BEAT_FAST">BEAT_FAST</a></th><td>Heartbeat is beating fast for hard crit</td></tr>
+        <tr><th><a href="code/__DEFINES/mobs.html#define/BEAT_SLOW">BEAT_SLOW</a></th><td>Heartbeat is beating slow for soft crit</td></tr>
+        <tr><th><a href="code/__DEFINES/mobs.html#define/BEAT_NONE">BEAT_NONE</a></th><td>Heartbeat is gone... He's dead Jim :(</td></tr>
+        <tr><th><a href="code/__DEFINES/mobs.html#define/SHOCK_NOGLOVES">SHOCK_NOGLOVES</a></th><td>Flags used by the flags parameter of electrocute act.
+Makes it so that the shock doesn't take gloves into account.</td></tr>
+        <tr><th><a href="code/__DEFINES/mobs.html#define/SHOCK_TESLA">SHOCK_TESLA</a></th><td>Used when the shock is from a tesla bolt.</td></tr>
+        <tr><th><a href="code/__DEFINES/mobs.html#define/SHOCK_ILLUSION">SHOCK_ILLUSION</a></th><td>Used when an illusion shocks something. Makes the shock deal stamina damage and not trigger certain secondary effects.</td></tr>
+        <tr><th><a href="code/__DEFINES/mobs.html#define/SHOCK_NOSTUN">SHOCK_NOSTUN</a></th><td>The shock doesn't stun.</td></tr>
+        <tr><th><a href="code/__DEFINES/mobs.html#define/INCORPOREAL_MOVE_BASIC">INCORPOREAL_MOVE_BASIC</a></th><td>normal movement, see: <a href="mob/living.html#var/incorporeal_move" title="/mob/living">/mob/living/var/incorporeal_move</a></td></tr>
+        <tr><th><a href="code/__DEFINES/mobs.html#define/INCORPOREAL_MOVE_SHADOW">INCORPOREAL_MOVE_SHADOW</a></th><td>leaves a trail of shadows</td></tr>
+        <tr><th><a href="code/__DEFINES/mobs.html#define/INCORPOREAL_MOVE_JAUNT">INCORPOREAL_MOVE_JAUNT</a></th><td>is blocked by holy water/salt</td></tr>
+        <tr><th><a href="code/__DEFINES/mobs.html#define/RECENT_EXAMINE_MAX_WINDOW">RECENT_EXAMINE_MAX_WINDOW</a></th><td>How long it takes for an examined atom to be removed from recent_examines. Should be the max of the below time windows</td></tr>
+        <tr><th><a href="code/__DEFINES/mobs.html#define/EXAMINE_MORE_WINDOW">EXAMINE_MORE_WINDOW</a></th><td>If you examine the same atom twice in this timeframe, we call examine_more() instead of examine()</td></tr>
+        <tr><th><a href="code/__DEFINES/mobs.html#define/EYE_CONTACT_WINDOW">EYE_CONTACT_WINDOW</a></th><td>If you examine another mob who's successfully examined you during this duration of time, you two try to make eye contact. Cute!</td></tr>
+        <tr><th><a href="code/__DEFINES/mobs.html#define/YAWN_PROPAGATION_EXAMINE_WINDOW">YAWN_PROPAGATION_EXAMINE_WINDOW</a></th><td>If you yawn while someone nearby has examined you within this time frame, it will force them to yawn as well. Tradecraft!</td></tr>
+        <tr><th><a href="code/__DEFINES/mobs.html#define/EYE_CONTACT_RANGE">EYE_CONTACT_RANGE</a></th><td>How far away you can be to make eye contact with someone while examining</td></tr>
+        <tr><th><a href="code/__DEFINES/mobs.html#define/CAN_SUCCUMB">CAN_SUCCUMB</a></th><td>Returns whether or not the given mob can succumb</td></tr>
+        <tr><th><a href="code/__DEFINES/mobs.html#define/STANDING_UP">STANDING_UP</a></th><td>Mob is standing up, usually associated with lying_angle value of 0.</td></tr>
+        <tr><th><a href="code/__DEFINES/mobs.html#define/LYING_DOWN">LYING_DOWN</a></th><td>Mob is lying down, usually associated with lying_angle values of 90 or 270.</td></tr>
+        <tr><th><a href="code/__DEFINES/mobs.html#define/PIXEL_Y_OFFSET_LYING">PIXEL_Y_OFFSET_LYING</a></th><td>How much a mob's sprite should be moved when they're lying down</td></tr>
+        <tr><th><a href="code/__DEFINES/mobs.html#define/SPAWN_MEGAFAUNA">SPAWN_MEGAFAUNA</a></th><td>Define for spawning megafauna instead of a mob for cave gen</td></tr>
+        <tr><th><a href="code/__DEFINES/mobs.html#define/SQUASHED_SHOULD_BE_DOWN">SQUASHED_SHOULD_BE_DOWN</a></th><td>Squash flags. For squashable element
+Whether or not the squashing requires the squashed mob to be lying down</td></tr>
+        <tr><th><a href="code/__DEFINES/mobs.html#define/SQUASHED_SHOULD_BE_GIBBED">SQUASHED_SHOULD_BE_GIBBED</a></th><td>Whether or not to gib when the squashed mob is moved over</td></tr>
+        <tr><th><a href="code/__DEFINES/mobs.html#define/THROW_MODE_DISABLED">THROW_MODE_DISABLED</a></th><td>Throw modes, defines whether or not to turn off throw mode after</td></tr>
+        <tr><th><a href="code/__DEFINES/mobs.html#define/SIGN_ONE_HAND">SIGN_ONE_HAND</a></th><td>Sign Language defines</td></tr>
+        <tr><th><a href="code/__DEFINES/mobs.html#define/TOTAL_LAYERS">TOTAL_LAYERS</a></th><td>Total number of layers for mob overlays</td></tr>
+        <tr><th><a href="code/__DEFINES/mobs.html#define/MUTATIONS_LAYER">MUTATIONS_LAYER</a></th><td>Mutations layer - Tk headglows, cold resistance glow, etc</td></tr>
+        <tr><th><a href="code/__DEFINES/mobs.html#define/BODY_BEHIND_LAYER">BODY_BEHIND_LAYER</a></th><td>Mutantrace features (tail when looking south) that must appear behind the body parts</td></tr>
+        <tr><th><a href="code/__DEFINES/mobs.html#define/BODYPARTS_LAYER">BODYPARTS_LAYER</a></th><td>Initially &quot;AUGMENTS&quot;, this was repurposed to be a catch-all bodyparts flag</td></tr>
+        <tr><th><a href="code/__DEFINES/mobs.html#define/BODY_ADJ_LAYER">BODY_ADJ_LAYER</a></th><td>Mutantrace features (snout, body markings) that must appear above the body parts</td></tr>
+        <tr><th><a href="code/__DEFINES/mobs.html#define/BODY_LAYER">BODY_LAYER</a></th><td>Underwear, undershirts, socks, eyes, lips(makeup)</td></tr>
+        <tr><th><a href="code/__DEFINES/mobs.html#define/FRONT_MUTATIONS_LAYER">FRONT_MUTATIONS_LAYER</a></th><td>Mutations that should appear above body, body_adj and bodyparts layer (e.g. laser eyes)</td></tr>
+        <tr><th><a href="code/__DEFINES/mobs.html#define/DAMAGE_LAYER">DAMAGE_LAYER</a></th><td>Damage indicators (cuts and burns)</td></tr>
+        <tr><th><a href="code/__DEFINES/mobs.html#define/UNIFORM_LAYER">UNIFORM_LAYER</a></th><td>Jumpsuit clothing layer</td></tr>
+        <tr><th><a href="code/__DEFINES/mobs.html#define/ID_LAYER">ID_LAYER</a></th><td>ID card layer (might be deprecated)</td></tr>
+        <tr><th><a href="code/__DEFINES/mobs.html#define/ID_CARD_LAYER">ID_CARD_LAYER</a></th><td>ID card layer</td></tr>
+        <tr><th><a href="code/__DEFINES/mobs.html#define/HANDS_PART_LAYER">HANDS_PART_LAYER</a></th><td>Hands body part layer (or is this for the arm? not sure...)</td></tr>
+        <tr><th><a href="code/__DEFINES/mobs.html#define/GLOVES_LAYER">GLOVES_LAYER</a></th><td>Gloves layer</td></tr>
+        <tr><th><a href="code/__DEFINES/mobs.html#define/SHOES_LAYER">SHOES_LAYER</a></th><td>Shoes layer</td></tr>
+        <tr><th><a href="code/__DEFINES/mobs.html#define/EARS_LAYER">EARS_LAYER</a></th><td>Ears layer (Spessmen have ears? Wow)</td></tr>
+        <tr><th><a href="code/__DEFINES/mobs.html#define/SUIT_LAYER">SUIT_LAYER</a></th><td>Suit layer (armor, hardsuits, etc.)</td></tr>
+        <tr><th><a href="code/__DEFINES/mobs.html#define/GLASSES_LAYER">GLASSES_LAYER</a></th><td>Glasses layer</td></tr>
+        <tr><th><a href="code/__DEFINES/mobs.html#define/BELT_LAYER">BELT_LAYER</a></th><td>Belt layer</td></tr>
+        <tr><th><a href="code/__DEFINES/mobs.html#define/SUIT_STORE_LAYER">SUIT_STORE_LAYER</a></th><td>Suit storage layer (tucking a gun or baton underneath your armor)</td></tr>
+        <tr><th><a href="code/__DEFINES/mobs.html#define/NECK_LAYER">NECK_LAYER</a></th><td>Neck layer (for wearing ties and bedsheets)</td></tr>
+        <tr><th><a href="code/__DEFINES/mobs.html#define/BACK_LAYER">BACK_LAYER</a></th><td>Back layer (for backpacks and equipment on your back)</td></tr>
+        <tr><th><a href="code/__DEFINES/mobs.html#define/HAIR_LAYER">HAIR_LAYER</a></th><td>Hair layer (mess with the fro and you got to go!)</td></tr>
+        <tr><th><a href="code/__DEFINES/mobs.html#define/FACEMASK_LAYER">FACEMASK_LAYER</a></th><td>Facemask layer (gas masks, breath masks, etc.)</td></tr>
+        <tr><th><a href="code/__DEFINES/mobs.html#define/HEAD_LAYER">HEAD_LAYER</a></th><td>Head layer (hats, helmets, etc.)</td></tr>
+        <tr><th><a href="code/__DEFINES/mobs.html#define/HANDCUFF_LAYER">HANDCUFF_LAYER</a></th><td>Handcuff layer (when your hands are cuffed)</td></tr>
+        <tr><th><a href="code/__DEFINES/mobs.html#define/LEGCUFF_LAYER">LEGCUFF_LAYER</a></th><td>Legcuff layer (when your feet are cuffed)</td></tr>
+        <tr><th><a href="code/__DEFINES/mobs.html#define/HANDS_LAYER">HANDS_LAYER</a></th><td>Hands layer (for the actual hand, not the arm... I think?)</td></tr>
+        <tr><th><a href="code/__DEFINES/mobs.html#define/BODY_FRONT_LAYER">BODY_FRONT_LAYER</a></th><td>Body front layer. Usually used for mutant bodyparts that need to be in front of stuff (e.g. cat ears)</td></tr>
+        <tr><th><a href="code/__DEFINES/mobs.html#define/ABOVE_BODY_FRONT_GLASSES_LAYER">ABOVE_BODY_FRONT_GLASSES_LAYER</a></th><td>Special body layer that actually require to be above the hair (e.g. lifted welding goggles)</td></tr>
+        <tr><th><a href="code/__DEFINES/mobs.html#define/ABOVE_BODY_FRONT_HEAD_LAYER">ABOVE_BODY_FRONT_HEAD_LAYER</a></th><td>Special body layer for the rare cases where something on the head needs to be above everything else (e.g. flowers)</td></tr>
+        <tr><th><a href="code/__DEFINES/mobs.html#define/WOUND_LAYER">WOUND_LAYER</a></th><td>Bleeding wound icons</td></tr>
+        <tr><th><a href="code/__DEFINES/mobs.html#define/HALO_LAYER">HALO_LAYER</a></th><td>Blood cult ascended halo layer, because there's currently no better solution for adding/removing</td></tr>
+        <tr><th><a href="code/__DEFINES/mobs.html#define/FIRE_LAYER">FIRE_LAYER</a></th><td>Fire layer when you're on fire</td></tr>
+        <tr><th><a href="code/__DEFINES/mobs.html#define/EXTERNAL_FRONT">EXTERNAL_FRONT</a></th><td>Draws organ on the BODY_FRONT_LAYER</td></tr>
+        <tr><th><a href="code/__DEFINES/mobs.html#define/EXTERNAL_ADJACENT">EXTERNAL_ADJACENT</a></th><td>Draws organ on the BODY_ADJ_LAYER</td></tr>
+        <tr><th><a href="code/__DEFINES/mobs.html#define/EXTERNAL_BEHIND">EXTERNAL_BEHIND</a></th><td>Draws organ on the BODY_BEHIND_LAYER</td></tr>
+        <tr><th><a href="code/__DEFINES/mobs.html#define/ALL_EXTERNAL_OVERLAYS">ALL_EXTERNAL_OVERLAYS</a></th><td>Draws organ on all EXTERNAL layers</td></tr>
+        <tr><th><a href="code/__DEFINES/mobs.html#define/UNDER_SUIT_LAYER">UNDER_SUIT_LAYER</a></th><td>The layer underneath the suit</td></tr>
+        <tr><th><a href="code/__DEFINES/mobs.html#define/UNDER_HEAD_LAYER">UNDER_HEAD_LAYER</a></th><td>The layer underneath the head (for hats)</td></tr>
+        <tr><th><a href="code/__DEFINES/mobs.html#define/ABOVE_SHOES_LAYER">ABOVE_SHOES_LAYER</a></th><td>The layer above shoes</td></tr>
+        <tr><th><a href="code/__DEFINES/mobs.html#define/ABOVE_BODY_FRONT_LAYER">ABOVE_BODY_FRONT_LAYER</a></th><td>The layer above mutant body parts</td></tr>
+        <tr><th><a href="code/__DEFINES/mobs.html#define/BE_CLOSE">BE_CLOSE</a></th><td>If silicons need to be next to the atom to use this</td></tr>
+        <tr><th><a href="code/__DEFINES/mobs.html#define/NO_DEXTERITY">NO_DEXTERITY</a></th><td>If other mobs (monkeys, aliens, etc) can use this</td></tr>
+        <tr><th><a href="code/__DEFINES/mobs.html#define/FLOOR_OKAY">FLOOR_OKAY</a></th><td>If mobs can use this while resting</td></tr>
+        <tr><th><a href="code/__DEFINES/mobs.html#define/RESIZE_DEFAULT_SIZE">RESIZE_DEFAULT_SIZE</a></th><td>The default mob sprite size (used for shrinking or enlarging the mob sprite to regular size)</td></tr>
+        <tr><th><a href="code/__DEFINES/mobs.html#define/CLIENT_FROM_VAR">CLIENT_FROM_VAR</a></th><td>Get the client from the var</td></tr>
+        <tr><th><a href="code/__DEFINES/mobs.html#define/VOMIT_TOXIC">VOMIT_TOXIC</a></th><td>The mob will vomit a green color</td></tr>
+        <tr><th><a href="code/__DEFINES/mobs.html#define/VOMIT_PURPLE">VOMIT_PURPLE</a></th><td>The mob will vomit a purple color</td></tr>
+        <tr><th><a href="code/__DEFINES/mobs.html#define/NO_BUCKLE_LYING">NO_BUCKLE_LYING</a></th><td>Possible value of <a href="atom/movable.html#var/buckle_lying" title="/atom/movable">/atom/movable/buckle_lying</a>. If set to a different (positive-or-zero) value than this, the buckling thing will force a lying angle on the buckled.</td></tr></table><h2 id="define">Define Details</h2>
+<h3 id="define/ABOVE_BODY_FRONT_GLASSES_LAYER"><aside class="declaration">#define </aside>ABOVE_BODY_FRONT_GLASSES_LAYER
+            <a href="https://github.com/UPTherac/Gameserver/blob/488a859807ce909376ee54e24fe157607f5860e1/code/__DEFINES/mobs.dm#L637">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;mobs.dm 637"/></a>
+    </h3>
+    <p>Special body layer that actually require to be above the hair (e.g. lifted welding goggles)</p><h3 id="define/ABOVE_BODY_FRONT_HEAD_LAYER"><aside class="declaration">#define </aside>ABOVE_BODY_FRONT_HEAD_LAYER
+            <a href="https://github.com/UPTherac/Gameserver/blob/488a859807ce909376ee54e24fe157607f5860e1/code/__DEFINES/mobs.dm#L639">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;mobs.dm 639"/></a>
+    </h3>
+    <p>Special body layer for the rare cases where something on the head needs to be above everything else (e.g. flowers)</p><h3 id="define/ABOVE_BODY_FRONT_LAYER"><aside class="declaration">#define </aside>ABOVE_BODY_FRONT_LAYER
+            <a href="https://github.com/UPTherac/Gameserver/blob/488a859807ce909376ee54e24fe157607f5860e1/code/__DEFINES/mobs.dm#L669">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;mobs.dm 669"/></a>
+    </h3>
+    <p>The layer above mutant body parts</p><h3 id="define/ABOVE_SHOES_LAYER"><aside class="declaration">#define </aside>ABOVE_SHOES_LAYER
+            <a href="https://github.com/UPTherac/Gameserver/blob/488a859807ce909376ee54e24fe157607f5860e1/code/__DEFINES/mobs.dm#L667">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;mobs.dm 667"/></a>
+    </h3>
+    <p>The layer above shoes</p><h3 id="define/ALL_EXTERNAL_OVERLAYS"><aside class="declaration">#define </aside>ALL_EXTERNAL_OVERLAYS
+            <a href="https://github.com/UPTherac/Gameserver/blob/488a859807ce909376ee54e24fe157607f5860e1/code/__DEFINES/mobs.dm#L655">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;mobs.dm 655"/></a>
+    </h3>
+    <p>Draws organ on all EXTERNAL layers</p><h3 id="define/BACK_LAYER"><aside class="declaration">#define </aside>BACK_LAYER
+            <a href="https://github.com/UPTherac/Gameserver/blob/488a859807ce909376ee54e24fe157607f5860e1/code/__DEFINES/mobs.dm#L621">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;mobs.dm 621"/></a>
+    </h3>
+    <p>Back layer (for backpacks and equipment on your back)</p><h3 id="define/BEAT_FAST"><aside class="declaration">#define </aside>BEAT_FAST
+            <a href="https://github.com/UPTherac/Gameserver/blob/488a859807ce909376ee54e24fe157607f5860e1/code/__DEFINES/mobs.dm#L145">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;mobs.dm 145"/></a>
+    </h3>
+    <p>Heartbeat is beating fast for hard crit</p><h3 id="define/BEAT_NONE"><aside class="declaration">#define </aside>BEAT_NONE
+            <a href="https://github.com/UPTherac/Gameserver/blob/488a859807ce909376ee54e24fe157607f5860e1/code/__DEFINES/mobs.dm#L149">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;mobs.dm 149"/></a>
+    </h3>
+    <p>Heartbeat is gone... He's dead Jim :(</p><h3 id="define/BEAT_SLOW"><aside class="declaration">#define </aside>BEAT_SLOW
+            <a href="https://github.com/UPTherac/Gameserver/blob/488a859807ce909376ee54e24fe157607f5860e1/code/__DEFINES/mobs.dm#L147">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;mobs.dm 147"/></a>
+    </h3>
+    <p>Heartbeat is beating slow for soft crit</p><h3 id="define/BELT_LAYER"><aside class="declaration">#define </aside>BELT_LAYER
+            <a href="https://github.com/UPTherac/Gameserver/blob/488a859807ce909376ee54e24fe157607f5860e1/code/__DEFINES/mobs.dm#L615">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;mobs.dm 615"/></a>
+    </h3>
+    <p>Belt layer</p><h3 id="define/BE_CLOSE"><aside class="declaration">#define </aside>BE_CLOSE
+            <a href="https://github.com/UPTherac/Gameserver/blob/488a859807ce909376ee54e24fe157607f5860e1/code/__DEFINES/mobs.dm#L673">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;mobs.dm 673"/></a>
+    </h3>
+    <p>If silicons need to be next to the atom to use this</p><h3 id="define/BLOOD_REGEN_FACTOR"><aside class="declaration">#define </aside>BLOOD_REGEN_FACTOR
+            <a href="https://github.com/UPTherac/Gameserver/blob/488a859807ce909376ee54e24fe157607f5860e1/code/__DEFINES/mobs.dm#L25">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;mobs.dm 25"/></a>
+    </h3>
+    <p>How efficiently humans regenerate blood.</p><h3 id="define/BODYPARTS_LAYER"><aside class="declaration">#define </aside>BODYPARTS_LAYER
+            <a href="https://github.com/UPTherac/Gameserver/blob/488a859807ce909376ee54e24fe157607f5860e1/code/__DEFINES/mobs.dm#L587">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;mobs.dm 587"/></a>
+    </h3>
+    <p>Initially &quot;AUGMENTS&quot;, this was repurposed to be a catch-all bodyparts flag</p><h3 id="define/BODYTYPE_DIGITIGRADE"><aside class="declaration">#define </aside>BODYTYPE_DIGITIGRADE
+            <a href="https://github.com/UPTherac/Gameserver/blob/488a859807ce909376ee54e24fe157607f5860e1/code/__DEFINES/mobs.dm#L76">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;mobs.dm 76"/></a>
+    </h3>
+    <p>The limb is digitigrade</p><h3 id="define/BODYTYPE_HUMANOID"><aside class="declaration">#define </aside>BODYTYPE_HUMANOID
+            <a href="https://github.com/UPTherac/Gameserver/blob/488a859807ce909376ee54e24fe157607f5860e1/code/__DEFINES/mobs.dm#L74">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;mobs.dm 74"/></a>
+    </h3>
+    <p>The limb fits the human mold</p><h3 id="define/BODYTYPE_MONKEY"><aside class="declaration">#define </aside>BODYTYPE_MONKEY
+            <a href="https://github.com/UPTherac/Gameserver/blob/488a859807ce909376ee54e24fe157607f5860e1/code/__DEFINES/mobs.dm#L78">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;mobs.dm 78"/></a>
+    </h3>
+    <p>The limb fits the monkey mold</p><h3 id="define/BODYTYPE_ORGANIC"><aside class="declaration">#define </aside>BODYTYPE_ORGANIC
+            <a href="https://github.com/UPTherac/Gameserver/blob/488a859807ce909376ee54e24fe157607f5860e1/code/__DEFINES/mobs.dm#L70">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;mobs.dm 70"/></a>
+    </h3>
+    <p>The limb is organic</p><h3 id="define/BODYTYPE_ROBOTIC"><aside class="declaration">#define </aside>BODYTYPE_ROBOTIC
+            <a href="https://github.com/UPTherac/Gameserver/blob/488a859807ce909376ee54e24fe157607f5860e1/code/__DEFINES/mobs.dm#L72">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;mobs.dm 72"/></a>
+    </h3>
+    <p>The limb is robotic</p><h3 id="define/BODYTYPE_SKRELL"><aside class="declaration">#define </aside>BODYTYPE_SKRELL
+            <a href="https://github.com/UPTherac/Gameserver/blob/488a859807ce909376ee54e24fe157607f5860e1/code/__DEFINES/mobs.dm#L82">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;mobs.dm 82"/></a>
+    </h3>
+    <p>The limb has skrelly bits</p><h3 id="define/BODYTYPE_SNOUTED"><aside class="declaration">#define </aside>BODYTYPE_SNOUTED
+            <a href="https://github.com/UPTherac/Gameserver/blob/488a859807ce909376ee54e24fe157607f5860e1/code/__DEFINES/mobs.dm#L80">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;mobs.dm 80"/></a>
+    </h3>
+    <p>The limb is snouted</p><h3 id="define/BODYTYPE_TESHARI"><aside class="declaration">#define </aside>BODYTYPE_TESHARI
+            <a href="https://github.com/UPTherac/Gameserver/blob/488a859807ce909376ee54e24fe157607f5860e1/code/__DEFINES/mobs.dm#L90">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;mobs.dm 90"/></a>
+    </h3>
+    <p>The limb is small and feathery</p><h3 id="define/BODYTYPE_VOX_BEAK"><aside class="declaration">#define </aside>BODYTYPE_VOX_BEAK
+            <a href="https://github.com/UPTherac/Gameserver/blob/488a859807ce909376ee54e24fe157607f5860e1/code/__DEFINES/mobs.dm#L84">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;mobs.dm 84"/></a>
+    </h3>
+    <p>The limb is voxed</p><h3 id="define/BODYTYPE_VOX_LEGS"><aside class="declaration">#define </aside>BODYTYPE_VOX_LEGS
+            <a href="https://github.com/UPTherac/Gameserver/blob/488a859807ce909376ee54e24fe157607f5860e1/code/__DEFINES/mobs.dm#L86">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;mobs.dm 86"/></a>
+    </h3>
+    <p>The limb is in the shape of a vox leg.</p><h3 id="define/BODYTYPE_VOX_OTHER"><aside class="declaration">#define </aside>BODYTYPE_VOX_OTHER
+            <a href="https://github.com/UPTherac/Gameserver/blob/488a859807ce909376ee54e24fe157607f5860e1/code/__DEFINES/mobs.dm#L88">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;mobs.dm 88"/></a>
+    </h3>
+    <p>Vox limb that isnt a head or legs.</p><h3 id="define/BODY_ADJ_LAYER"><aside class="declaration">#define </aside>BODY_ADJ_LAYER
+            <a href="https://github.com/UPTherac/Gameserver/blob/488a859807ce909376ee54e24fe157607f5860e1/code/__DEFINES/mobs.dm#L589">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;mobs.dm 589"/></a>
+    </h3>
+    <p>Mutantrace features (snout, body markings) that must appear above the body parts</p><h3 id="define/BODY_BEHIND_LAYER"><aside class="declaration">#define </aside>BODY_BEHIND_LAYER
+            <a href="https://github.com/UPTherac/Gameserver/blob/488a859807ce909376ee54e24fe157607f5860e1/code/__DEFINES/mobs.dm#L585">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;mobs.dm 585"/></a>
+    </h3>
+    <p>Mutantrace features (tail when looking south) that must appear behind the body parts</p><h3 id="define/BODY_FRONT_LAYER"><aside class="declaration">#define </aside>BODY_FRONT_LAYER
+            <a href="https://github.com/UPTherac/Gameserver/blob/488a859807ce909376ee54e24fe157607f5860e1/code/__DEFINES/mobs.dm#L635">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;mobs.dm 635"/></a>
+    </h3>
+    <p>Body front layer. Usually used for mutant bodyparts that need to be in front of stuff (e.g. cat ears)</p><h3 id="define/BODY_LAYER"><aside class="declaration">#define </aside>BODY_LAYER
+            <a href="https://github.com/UPTherac/Gameserver/blob/488a859807ce909376ee54e24fe157607f5860e1/code/__DEFINES/mobs.dm#L591">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;mobs.dm 591"/></a>
+    </h3>
+    <p>Underwear, undershirts, socks, eyes, lips(makeup)</p><h3 id="define/BP_BLOCK_CHANGE_SPECIES"><aside class="declaration">#define </aside>BP_BLOCK_CHANGE_SPECIES
+            <a href="https://github.com/UPTherac/Gameserver/blob/488a859807ce909376ee54e24fe157607f5860e1/code/__DEFINES/mobs.dm#L66">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;mobs.dm 66"/></a>
+    </h3>
+    <p>Bodypart does not get replaced during set_species()</p><h3 id="define/CAN_SUCCUMB"><aside class="declaration">#define </aside>CAN_SUCCUMB
+            <aside>(target)</aside>
+            <a href="https://github.com/UPTherac/Gameserver/blob/488a859807ce909376ee54e24fe157607f5860e1/code/__DEFINES/mobs.dm#L511">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;mobs.dm 511"/></a>
+    </h3>
+    <p>Returns whether or not the given mob can succumb</p><h3 id="define/CLIENT_FROM_VAR"><aside class="declaration">#define </aside>CLIENT_FROM_VAR
+            <aside>(I)</aside>
+            <a href="https://github.com/UPTherac/Gameserver/blob/488a859807ce909376ee54e24fe157607f5860e1/code/__DEFINES/mobs.dm#L685">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;mobs.dm 685"/></a>
+    </h3>
+    <p>Get the client from the var</p><h3 id="define/DAMAGE_LAYER"><aside class="declaration">#define </aside>DAMAGE_LAYER
+            <a href="https://github.com/UPTherac/Gameserver/blob/488a859807ce909376ee54e24fe157607f5860e1/code/__DEFINES/mobs.dm#L595">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;mobs.dm 595"/></a>
+    </h3>
+    <p>Damage indicators (cuts and burns)</p><h3 id="define/DIGITIGRADE_FORCED"><aside class="declaration">#define </aside>DIGITIGRADE_FORCED
+            <a href="https://github.com/UPTherac/Gameserver/blob/488a859807ce909376ee54e24fe157607f5860e1/code/__DEFINES/mobs.dm#L130">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;mobs.dm 130"/></a>
+    </h3>
+    <p>The species is forced to have digitigrade legs in generation.</p><h3 id="define/DIGITIGRADE_NEVER"><aside class="declaration">#define </aside>DIGITIGRADE_NEVER
+            <a href="https://github.com/UPTherac/Gameserver/blob/488a859807ce909376ee54e24fe157607f5860e1/code/__DEFINES/mobs.dm#L126">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;mobs.dm 126"/></a>
+    </h3>
+    <p>The species does not have digitigrade legs in generation.</p><h3 id="define/DIGITIGRADE_OPTIONAL"><aside class="declaration">#define </aside>DIGITIGRADE_OPTIONAL
+            <a href="https://github.com/UPTherac/Gameserver/blob/488a859807ce909376ee54e24fe157607f5860e1/code/__DEFINES/mobs.dm#L128">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;mobs.dm 128"/></a>
+    </h3>
+    <p>The species can have digitigrade legs in generation</p><h3 id="define/EARS_LAYER"><aside class="declaration">#define </aside>EARS_LAYER
+            <a href="https://github.com/UPTherac/Gameserver/blob/488a859807ce909376ee54e24fe157607f5860e1/code/__DEFINES/mobs.dm#L609">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;mobs.dm 609"/></a>
+    </h3>
+    <p>Ears layer (Spessmen have ears? Wow)</p><h3 id="define/EXAMINE_MORE_WINDOW"><aside class="declaration">#define </aside>EXAMINE_MORE_WINDOW
+            <a href="https://github.com/UPTherac/Gameserver/blob/488a859807ce909376ee54e24fe157607f5860e1/code/__DEFINES/mobs.dm#L498">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;mobs.dm 498"/></a>
+    </h3>
+    <p>If you examine the same atom twice in this timeframe, we call examine_more() instead of examine()</p><h3 id="define/EXTERNAL_ADJACENT"><aside class="declaration">#define </aside>EXTERNAL_ADJACENT
+            <a href="https://github.com/UPTherac/Gameserver/blob/488a859807ce909376ee54e24fe157607f5860e1/code/__DEFINES/mobs.dm#L651">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;mobs.dm 651"/></a>
+    </h3>
+    <p>Draws organ on the BODY_ADJ_LAYER</p><h3 id="define/EXTERNAL_BEHIND"><aside class="declaration">#define </aside>EXTERNAL_BEHIND
+            <a href="https://github.com/UPTherac/Gameserver/blob/488a859807ce909376ee54e24fe157607f5860e1/code/__DEFINES/mobs.dm#L653">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;mobs.dm 653"/></a>
+    </h3>
+    <p>Draws organ on the BODY_BEHIND_LAYER</p><h3 id="define/EXTERNAL_FRONT"><aside class="declaration">#define </aside>EXTERNAL_FRONT
+            <a href="https://github.com/UPTherac/Gameserver/blob/488a859807ce909376ee54e24fe157607f5860e1/code/__DEFINES/mobs.dm#L649">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;mobs.dm 649"/></a>
+    </h3>
+    <p>Draws organ on the BODY_FRONT_LAYER</p><h3 id="define/EYE_CONTACT_RANGE"><aside class="declaration">#define </aside>EYE_CONTACT_RANGE
+            <a href="https://github.com/UPTherac/Gameserver/blob/488a859807ce909376ee54e24fe157607f5860e1/code/__DEFINES/mobs.dm#L505">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;mobs.dm 505"/></a>
+    </h3>
+    <p>How far away you can be to make eye contact with someone while examining</p><h3 id="define/EYE_CONTACT_WINDOW"><aside class="declaration">#define </aside>EYE_CONTACT_WINDOW
+            <a href="https://github.com/UPTherac/Gameserver/blob/488a859807ce909376ee54e24fe157607f5860e1/code/__DEFINES/mobs.dm#L500">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;mobs.dm 500"/></a>
+    </h3>
+    <p>If you examine another mob who's successfully examined you during this duration of time, you two try to make eye contact. Cute!</p><h3 id="define/FACEMASK_LAYER"><aside class="declaration">#define </aside>FACEMASK_LAYER
+            <a href="https://github.com/UPTherac/Gameserver/blob/488a859807ce909376ee54e24fe157607f5860e1/code/__DEFINES/mobs.dm#L625">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;mobs.dm 625"/></a>
+    </h3>
+    <p>Facemask layer (gas masks, breath masks, etc.)</p><h3 id="define/FIRE_LAYER"><aside class="declaration">#define </aside>FIRE_LAYER
+            <a href="https://github.com/UPTherac/Gameserver/blob/488a859807ce909376ee54e24fe157607f5860e1/code/__DEFINES/mobs.dm#L645">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;mobs.dm 645"/></a>
+    </h3>
+    <p>Fire layer when you're on fire</p><h3 id="define/FLOOR_OKAY"><aside class="declaration">#define </aside>FLOOR_OKAY
+            <a href="https://github.com/UPTherac/Gameserver/blob/488a859807ce909376ee54e24fe157607f5860e1/code/__DEFINES/mobs.dm#L679">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;mobs.dm 679"/></a>
+    </h3>
+    <p>If mobs can use this while resting</p><h3 id="define/FRONT_MUTATIONS_LAYER"><aside class="declaration">#define </aside>FRONT_MUTATIONS_LAYER
+            <a href="https://github.com/UPTherac/Gameserver/blob/488a859807ce909376ee54e24fe157607f5860e1/code/__DEFINES/mobs.dm#L593">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;mobs.dm 593"/></a>
+    </h3>
+    <p>Mutations that should appear above body, body_adj and bodyparts layer (e.g. laser eyes)</p><h3 id="define/GLASSES_LAYER"><aside class="declaration">#define </aside>GLASSES_LAYER
+            <a href="https://github.com/UPTherac/Gameserver/blob/488a859807ce909376ee54e24fe157607f5860e1/code/__DEFINES/mobs.dm#L613">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;mobs.dm 613"/></a>
+    </h3>
+    <p>Glasses layer</p><h3 id="define/GLOVES_LAYER"><aside class="declaration">#define </aside>GLOVES_LAYER
+            <a href="https://github.com/UPTherac/Gameserver/blob/488a859807ce909376ee54e24fe157607f5860e1/code/__DEFINES/mobs.dm#L605">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;mobs.dm 605"/></a>
+    </h3>
+    <p>Gloves layer</p><h3 id="define/HAIR_LAYER"><aside class="declaration">#define </aside>HAIR_LAYER
+            <a href="https://github.com/UPTherac/Gameserver/blob/488a859807ce909376ee54e24fe157607f5860e1/code/__DEFINES/mobs.dm#L623">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;mobs.dm 623"/></a>
+    </h3>
+    <p>Hair layer (mess with the fro and you got to go!)</p><h3 id="define/HALO_LAYER"><aside class="declaration">#define </aside>HALO_LAYER
+            <a href="https://github.com/UPTherac/Gameserver/blob/488a859807ce909376ee54e24fe157607f5860e1/code/__DEFINES/mobs.dm#L643">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;mobs.dm 643"/></a>
+    </h3>
+    <p>Blood cult ascended halo layer, because there's currently no better solution for adding/removing</p><h3 id="define/HANDCUFF_LAYER"><aside class="declaration">#define </aside>HANDCUFF_LAYER
+            <a href="https://github.com/UPTherac/Gameserver/blob/488a859807ce909376ee54e24fe157607f5860e1/code/__DEFINES/mobs.dm#L629">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;mobs.dm 629"/></a>
+    </h3>
+    <p>Handcuff layer (when your hands are cuffed)</p><h3 id="define/HANDS_LAYER"><aside class="declaration">#define </aside>HANDS_LAYER
+            <a href="https://github.com/UPTherac/Gameserver/blob/488a859807ce909376ee54e24fe157607f5860e1/code/__DEFINES/mobs.dm#L633">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;mobs.dm 633"/></a>
+    </h3>
+    <p>Hands layer (for the actual hand, not the arm... I think?)</p><h3 id="define/HANDS_PART_LAYER"><aside class="declaration">#define </aside>HANDS_PART_LAYER
+            <a href="https://github.com/UPTherac/Gameserver/blob/488a859807ce909376ee54e24fe157607f5860e1/code/__DEFINES/mobs.dm#L603">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;mobs.dm 603"/></a>
+    </h3>
+    <p>Hands body part layer (or is this for the arm? not sure...)</p><h3 id="define/HEAD_LAYER"><aside class="declaration">#define </aside>HEAD_LAYER
+            <a href="https://github.com/UPTherac/Gameserver/blob/488a859807ce909376ee54e24fe157607f5860e1/code/__DEFINES/mobs.dm#L627">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;mobs.dm 627"/></a>
+    </h3>
+    <p>Head layer (hats, helmets, etc.)</p><h3 id="define/HUMAN_BODY"><aside class="declaration">#define </aside>HUMAN_BODY
+            <a href="https://github.com/UPTherac/Gameserver/blob/488a859807ce909376ee54e24fe157607f5860e1/code/__DEFINES/mobs.dm#L134">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;mobs.dm 134"/></a>
+    </h3>
+    <p>Body type bitfields for allowed_animal_origin used to check compatible surgery body types (use NONE for no matching body type)</p><h3 id="define/ID_CARD_LAYER"><aside class="declaration">#define </aside>ID_CARD_LAYER
+            <a href="https://github.com/UPTherac/Gameserver/blob/488a859807ce909376ee54e24fe157607f5860e1/code/__DEFINES/mobs.dm#L601">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;mobs.dm 601"/></a>
+    </h3>
+    <p>ID card layer</p><h3 id="define/ID_LAYER"><aside class="declaration">#define </aside>ID_LAYER
+            <a href="https://github.com/UPTherac/Gameserver/blob/488a859807ce909376ee54e24fe157607f5860e1/code/__DEFINES/mobs.dm#L599">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;mobs.dm 599"/></a>
+    </h3>
+    <p>ID card layer (might be deprecated)</p><h3 id="define/INCORPOREAL_MOVE_BASIC"><aside class="declaration">#define </aside>INCORPOREAL_MOVE_BASIC
+            <a href="https://github.com/UPTherac/Gameserver/blob/488a859807ce909376ee54e24fe157607f5860e1/code/__DEFINES/mobs.dm#L352">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;mobs.dm 352"/></a>
+    </h3>
+    <p>normal movement, see: <a href="mob/living.html#var/incorporeal_move" title="/mob/living">/mob/living/var/incorporeal_move</a></p><h3 id="define/INCORPOREAL_MOVE_JAUNT"><aside class="declaration">#define </aside>INCORPOREAL_MOVE_JAUNT
+            <a href="https://github.com/UPTherac/Gameserver/blob/488a859807ce909376ee54e24fe157607f5860e1/code/__DEFINES/mobs.dm#L354">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;mobs.dm 354"/></a>
+    </h3>
+    <p>is blocked by holy water/salt</p><h3 id="define/INCORPOREAL_MOVE_SHADOW"><aside class="declaration">#define </aside>INCORPOREAL_MOVE_SHADOW
+            <a href="https://github.com/UPTherac/Gameserver/blob/488a859807ce909376ee54e24fe157607f5860e1/code/__DEFINES/mobs.dm#L353">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;mobs.dm 353"/></a>
+    </h3>
+    <p>leaves a trail of shadows</p><h3 id="define/LEGCUFF_LAYER"><aside class="declaration">#define </aside>LEGCUFF_LAYER
+            <a href="https://github.com/UPTherac/Gameserver/blob/488a859807ce909376ee54e24fe157607f5860e1/code/__DEFINES/mobs.dm#L631">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;mobs.dm 631"/></a>
+    </h3>
+    <p>Legcuff layer (when your feet are cuffed)</p><h3 id="define/LYING_DOWN"><aside class="declaration">#define </aside>LYING_DOWN
+            <a href="https://github.com/UPTherac/Gameserver/blob/488a859807ce909376ee54e24fe157607f5860e1/code/__DEFINES/mobs.dm#L517">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;mobs.dm 517"/></a>
+    </h3>
+    <p>Mob is lying down, usually associated with lying_angle values of 90 or 270.</p><h3 id="define/MUTATIONS_LAYER"><aside class="declaration">#define </aside>MUTATIONS_LAYER
+            <a href="https://github.com/UPTherac/Gameserver/blob/488a859807ce909376ee54e24fe157607f5860e1/code/__DEFINES/mobs.dm#L583">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;mobs.dm 583"/></a>
+    </h3>
+    <p>Mutations layer - Tk headglows, cold resistance glow, etc</p><h3 id="define/NECK_LAYER"><aside class="declaration">#define </aside>NECK_LAYER
+            <a href="https://github.com/UPTherac/Gameserver/blob/488a859807ce909376ee54e24fe157607f5860e1/code/__DEFINES/mobs.dm#L619">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;mobs.dm 619"/></a>
+    </h3>
+    <p>Neck layer (for wearing ties and bedsheets)</p><h3 id="define/NO_BUCKLE_LYING"><aside class="declaration">#define </aside>NO_BUCKLE_LYING
+            <a href="https://github.com/UPTherac/Gameserver/blob/488a859807ce909376ee54e24fe157607f5860e1/code/__DEFINES/mobs.dm#L693">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;mobs.dm 693"/></a>
+    </h3>
+    <p>Possible value of <a href="atom/movable.html#var/buckle_lying" title="/atom/movable">/atom/movable/buckle_lying</a>. If set to a different (positive-or-zero) value than this, the buckling thing will force a lying angle on the buckled.</p><h3 id="define/NO_DEXTERITY"><aside class="declaration">#define </aside>NO_DEXTERITY
+            <a href="https://github.com/UPTherac/Gameserver/blob/488a859807ce909376ee54e24fe157607f5860e1/code/__DEFINES/mobs.dm#L675">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;mobs.dm 675"/></a>
+    </h3>
+    <p>If other mobs (monkeys, aliens, etc) can use this</p><h3 id="define/PIXEL_Y_OFFSET_LYING"><aside class="declaration">#define </aside>PIXEL_Y_OFFSET_LYING
+            <a href="https://github.com/UPTherac/Gameserver/blob/488a859807ce909376ee54e24fe157607f5860e1/code/__DEFINES/mobs.dm#L520">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;mobs.dm 520"/></a>
+    </h3>
+    <p>How much a mob's sprite should be moved when they're lying down</p><h3 id="define/RECENT_EXAMINE_MAX_WINDOW"><aside class="declaration">#define </aside>RECENT_EXAMINE_MAX_WINDOW
+            <a href="https://github.com/UPTherac/Gameserver/blob/488a859807ce909376ee54e24fe157607f5860e1/code/__DEFINES/mobs.dm#L496">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;mobs.dm 496"/></a>
+    </h3>
+    <p>How long it takes for an examined atom to be removed from recent_examines. Should be the max of the below time windows</p><h3 id="define/RESIZE_DEFAULT_SIZE"><aside class="declaration">#define </aside>RESIZE_DEFAULT_SIZE
+            <a href="https://github.com/UPTherac/Gameserver/blob/488a859807ce909376ee54e24fe157607f5860e1/code/__DEFINES/mobs.dm#L682">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;mobs.dm 682"/></a>
+    </h3>
+    <p>The default mob sprite size (used for shrinking or enlarging the mob sprite to regular size)</p><h3 id="define/SHOCK_ILLUSION"><aside class="declaration">#define </aside>SHOCK_ILLUSION
+            <a href="https://github.com/UPTherac/Gameserver/blob/488a859807ce909376ee54e24fe157607f5860e1/code/__DEFINES/mobs.dm#L348">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;mobs.dm 348"/></a>
+    </h3>
+    <p>Used when an illusion shocks something. Makes the shock deal stamina damage and not trigger certain secondary effects.</p><h3 id="define/SHOCK_NOGLOVES"><aside class="declaration">#define </aside>SHOCK_NOGLOVES
+            <a href="https://github.com/UPTherac/Gameserver/blob/488a859807ce909376ee54e24fe157607f5860e1/code/__DEFINES/mobs.dm#L344">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;mobs.dm 344"/></a>
+    </h3>
+    <p>Flags used by the flags parameter of electrocute act.
+Makes it so that the shock doesn't take gloves into account.</p><h3 id="define/SHOCK_NOSTUN"><aside class="declaration">#define </aside>SHOCK_NOSTUN
+            <a href="https://github.com/UPTherac/Gameserver/blob/488a859807ce909376ee54e24fe157607f5860e1/code/__DEFINES/mobs.dm#L350">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;mobs.dm 350"/></a>
+    </h3>
+    <p>The shock doesn't stun.</p><h3 id="define/SHOCK_TESLA"><aside class="declaration">#define </aside>SHOCK_TESLA
+            <a href="https://github.com/UPTherac/Gameserver/blob/488a859807ce909376ee54e24fe157607f5860e1/code/__DEFINES/mobs.dm#L346">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;mobs.dm 346"/></a>
+    </h3>
+    <p>Used when the shock is from a tesla bolt.</p><h3 id="define/SHOES_LAYER"><aside class="declaration">#define </aside>SHOES_LAYER
+            <a href="https://github.com/UPTherac/Gameserver/blob/488a859807ce909376ee54e24fe157607f5860e1/code/__DEFINES/mobs.dm#L607">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;mobs.dm 607"/></a>
+    </h3>
+    <p>Shoes layer</p><h3 id="define/SIGN_ONE_HAND"><aside class="declaration">#define </aside>SIGN_ONE_HAND
+            <a href="https://github.com/UPTherac/Gameserver/blob/488a859807ce909376ee54e24fe157607f5860e1/code/__DEFINES/mobs.dm#L573">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;mobs.dm 573"/></a>
+    </h3>
+    <p>Sign Language defines</p><h3 id="define/SPAWN_MEGAFAUNA"><aside class="declaration">#define </aside>SPAWN_MEGAFAUNA
+            <a href="https://github.com/UPTherac/Gameserver/blob/488a859807ce909376ee54e24fe157607f5860e1/code/__DEFINES/mobs.dm#L523">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;mobs.dm 523"/></a>
+    </h3>
+    <p>Define for spawning megafauna instead of a mob for cave gen</p><h3 id="define/SQUASHED_SHOULD_BE_DOWN"><aside class="declaration">#define </aside>SQUASHED_SHOULD_BE_DOWN
+            <a href="https://github.com/UPTherac/Gameserver/blob/488a859807ce909376ee54e24fe157607f5860e1/code/__DEFINES/mobs.dm#L528">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;mobs.dm 528"/></a>
+    </h3>
+    <p>Squash flags. For squashable element
+Whether or not the squashing requires the squashed mob to be lying down</p><h3 id="define/SQUASHED_SHOULD_BE_GIBBED"><aside class="declaration">#define </aside>SQUASHED_SHOULD_BE_GIBBED
+            <a href="https://github.com/UPTherac/Gameserver/blob/488a859807ce909376ee54e24fe157607f5860e1/code/__DEFINES/mobs.dm#L530">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;mobs.dm 530"/></a>
+    </h3>
+    <p>Whether or not to gib when the squashed mob is moved over</p><h3 id="define/STANDING_UP"><aside class="declaration">#define </aside>STANDING_UP
+            <a href="https://github.com/UPTherac/Gameserver/blob/488a859807ce909376ee54e24fe157607f5860e1/code/__DEFINES/mobs.dm#L515">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;mobs.dm 515"/></a>
+    </h3>
+    <p>Mob is standing up, usually associated with lying_angle value of 0.</p><h3 id="define/SUIT_LAYER"><aside class="declaration">#define </aside>SUIT_LAYER
+            <a href="https://github.com/UPTherac/Gameserver/blob/488a859807ce909376ee54e24fe157607f5860e1/code/__DEFINES/mobs.dm#L611">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;mobs.dm 611"/></a>
+    </h3>
+    <p>Suit layer (armor, hardsuits, etc.)</p><h3 id="define/SUIT_STORE_LAYER"><aside class="declaration">#define </aside>SUIT_STORE_LAYER
+            <a href="https://github.com/UPTherac/Gameserver/blob/488a859807ce909376ee54e24fe157607f5860e1/code/__DEFINES/mobs.dm#L617">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;mobs.dm 617"/></a>
+    </h3>
+    <p>Suit storage layer (tucking a gun or baton underneath your armor)</p><h3 id="define/THROW_MODE_DISABLED"><aside class="declaration">#define </aside>THROW_MODE_DISABLED
+            <a href="https://github.com/UPTherac/Gameserver/blob/488a859807ce909376ee54e24fe157607f5860e1/code/__DEFINES/mobs.dm#L555">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;mobs.dm 555"/></a>
+    </h3>
+    <p>Throw modes, defines whether or not to turn off throw mode after</p><h3 id="define/TOTAL_LAYERS"><aside class="declaration">#define </aside>TOTAL_LAYERS
+            <a href="https://github.com/UPTherac/Gameserver/blob/488a859807ce909376ee54e24fe157607f5860e1/code/__DEFINES/mobs.dm#L581">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;mobs.dm 581"/></a>
+    </h3>
+    <p>Total number of layers for mob overlays</p><h3 id="define/UNDER_HEAD_LAYER"><aside class="declaration">#define </aside>UNDER_HEAD_LAYER
+            <a href="https://github.com/UPTherac/Gameserver/blob/488a859807ce909376ee54e24fe157607f5860e1/code/__DEFINES/mobs.dm#L663">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;mobs.dm 663"/></a>
+    </h3>
+    <p>The layer underneath the head (for hats)</p><h3 id="define/UNDER_SUIT_LAYER"><aside class="declaration">#define </aside>UNDER_SUIT_LAYER
+            <a href="https://github.com/UPTherac/Gameserver/blob/488a859807ce909376ee54e24fe157607f5860e1/code/__DEFINES/mobs.dm#L661">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;mobs.dm 661"/></a>
+    </h3>
+    <p>The layer underneath the suit</p><h3 id="define/UNIFORM_LAYER"><aside class="declaration">#define </aside>UNIFORM_LAYER
+            <a href="https://github.com/UPTherac/Gameserver/blob/488a859807ce909376ee54e24fe157607f5860e1/code/__DEFINES/mobs.dm#L597">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;mobs.dm 597"/></a>
+    </h3>
+    <p>Jumpsuit clothing layer</p><h3 id="define/VOMIT_PURPLE"><aside class="declaration">#define </aside>VOMIT_PURPLE
+            <a href="https://github.com/UPTherac/Gameserver/blob/488a859807ce909376ee54e24fe157607f5860e1/code/__DEFINES/mobs.dm#L690">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;mobs.dm 690"/></a>
+    </h3>
+    <p>The mob will vomit a purple color</p><h3 id="define/VOMIT_TOXIC"><aside class="declaration">#define </aside>VOMIT_TOXIC
+            <a href="https://github.com/UPTherac/Gameserver/blob/488a859807ce909376ee54e24fe157607f5860e1/code/__DEFINES/mobs.dm#L688">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;mobs.dm 688"/></a>
+    </h3>
+    <p>The mob will vomit a green color</p><h3 id="define/WOUND_LAYER"><aside class="declaration">#define </aside>WOUND_LAYER
+            <a href="https://github.com/UPTherac/Gameserver/blob/488a859807ce909376ee54e24fe157607f5860e1/code/__DEFINES/mobs.dm#L641">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;mobs.dm 641"/></a>
+    </h3>
+    <p>Bleeding wound icons</p><h3 id="define/YAWN_PROPAGATION_EXAMINE_WINDOW"><aside class="declaration">#define </aside>YAWN_PROPAGATION_EXAMINE_WINDOW
+            <a href="https://github.com/UPTherac/Gameserver/blob/488a859807ce909376ee54e24fe157607f5860e1/code/__DEFINES/mobs.dm#L502">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;mobs.dm 502"/></a>
+    </h3>
+    <p>If you yawn while someone nearby has examined you within this time frame, it will force them to yawn as well. Tradecraft!</p></main>
+<footer>
+    pariah.dme
+    <a href="https://github.com/UPTherac/Gameserver/tree/488a859807ce909376ee54e24fe157607f5860e1">488a859</a>
+        (master) &mdash; <a href="https://github.com/SpaceManiac/SpacemanDMM/blob/master/src/dmdoc/README.md">dmdoc 1.4.1</a></footer>
+</body>
+</html>

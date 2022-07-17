@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <base href="../../../" />
+    <link rel="stylesheet" href="dmdoc.css" />
+    <title>&#x2F;datum&#x2F;controller&#x2F;subsystem&#x2F;mapping - &#x2F;tg&#x2F; Station 13</title>
+</head>
+<body>
+<header>
+    <a href="index.html">&#x2F;tg&#x2F; Station 13</a> -
+    <a href="index.html#modules">Modules</a> -
+    <a href="index.html#types">Types</a>
+ &mdash; <a href="datum/controller/subsystem/mapping.html#var">Var Details</a> - <a href="datum/controller/subsystem/mapping.html#proc">Proc Details</a></header>
+<main>
+<h1>mapping <aside>/<a href="datum.html">datum</a>/<a href="datum/controller/subsystem.html">controller/subsystem</a>/<a href="datum/controller/subsystem/mapping.html">mapping</a></aside>
+        
+    
+            <a href="https://github.com/UPTherac/Gameserver/blob/488a859807ce909376ee54e24fe157607f5860e1/code/controllers/subsystem/mapping.dm#L1">
+        <img src="git.png" width="16" height="16" title="code&#x2F;controllers&#x2F;subsystem&#x2F;mapping.dm 1"/></a></h1>
+
+<table class="summary" cellspacing="0"><tr><td colspan="2"><h2>Vars</h2></td></tr>
+            <tr><th><a href="datum/controller/subsystem/mapping.html#var/adding_new_zlevel">adding_new_zlevel</a></th><td>True when in the process of adding a new Z-level, global locking</td></tr>
+            <tr><th><a href="datum/controller/subsystem/mapping.html#var/biomes">biomes</a></th><td>All possible biomes in assoc list as type || instance</td></tr>
+            <tr><th><a href="datum/controller/subsystem/mapping.html#var/themed_ruins">themed_ruins</a></th><td>List of ruins, separated by their theme</td></tr><tr><td colspan="2"><h2>Procs</h2></td></tr>
+            <tr><th><a href="datum/controller/subsystem/mapping.html#proc/get_station_center">get_station_center</a></th><td>Prefer not to use this one too often</td></tr>
+            <tr><th><a href="datum/controller/subsystem/mapping.html#proc/get_turf_above">get_turf_above</a></th><td>Attempt to get the turf above the provided one according to Z traits</td></tr>
+            <tr><th><a href="datum/controller/subsystem/mapping.html#proc/get_turf_below">get_turf_below</a></th><td>Attempt to get the turf below the provided one according to Z traits</td></tr>
+            <tr><th><a href="datum/controller/subsystem/mapping.html#proc/initialize_biomes">initialize_biomes</a></th><td>Initialize all biomes, assoc as type || instance</td></tr>
+            <tr><th><a href="datum/controller/subsystem/mapping.html#proc/level_has_all_traits">level_has_all_traits</a></th><td>Check if levels[z] has all of the specified traits</td></tr>
+            <tr><th><a href="datum/controller/subsystem/mapping.html#proc/level_has_any_trait">level_has_any_trait</a></th><td>Check if levels[z] has any of the specified traits</td></tr>
+            <tr><th><a href="datum/controller/subsystem/mapping.html#proc/level_trait">level_trait</a></th><td>Look up levels[z].traits[trait]</td></tr>
+            <tr><th><a href="datum/controller/subsystem/mapping.html#proc/levels_by_any_trait">levels_by_any_trait</a></th><td>Get a list of all z which have any of the specified traits</td></tr>
+            <tr><th><a href="datum/controller/subsystem/mapping.html#proc/levels_by_trait">levels_by_trait</a></th><td>Get a list of all z which have the specified trait</td></tr>
+            <tr><th><a href="datum/controller/subsystem/mapping.html#proc/setup_ruins">setup_ruins</a></th><td>##setup_ruins</td></tr></table>
+    <h2 id="var">Var Details</h2><h3 id="var/adding_new_zlevel"><aside class="declaration">var </aside>adding_new_zlevel
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/UPTherac/Gameserver/blob/488a859807ce909376ee54e24fe157607f5860e1/code/controllers/subsystem/mapping.dm#L48">
+        <img src="git.png" width="16" height="16" title="code&#x2F;controllers&#x2F;subsystem&#x2F;mapping.dm 48"/></a></h3>
+        <p>True when in the process of adding a new Z-level, global locking</p><h3 id="var/biomes"><aside class="declaration">var </aside>biomes
+            <aside>&ndash; /list</aside>
+        
+    
+            <a href="https://github.com/UPTherac/Gameserver/blob/488a859807ce909376ee54e24fe157607f5860e1/code/controllers/subsystem/mapping.dm#L38">
+        <img src="git.png" width="16" height="16" title="code&#x2F;controllers&#x2F;subsystem&#x2F;mapping.dm 38"/></a></h3>
+        <p>All possible biomes in assoc list as type || instance</p><h3 id="var/themed_ruins"><aside class="declaration">var </aside>themed_ruins
+            <aside>&ndash; /list</aside>
+        
+    
+            <a href="https://github.com/UPTherac/Gameserver/blob/488a859807ce909376ee54e24fe157607f5860e1/code/controllers/subsystem/mapping.dm#L19">
+        <img src="git.png" width="16" height="16" title="code&#x2F;controllers&#x2F;subsystem&#x2F;mapping.dm 19"/></a></h3>
+        <p>List of ruins, separated by their theme</p><h2 id="proc">Proc Details</h2><h3 id="proc/get_station_center"><aside class="declaration">proc </aside>get_station_center<aside>() 
+        
+    
+            <a href="https://github.com/UPTherac/Gameserver/blob/488a859807ce909376ee54e24fe157607f5860e1/code/modules/mapping/space_management/traits.dm#L71">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mapping&#x2F;space_management&#x2F;traits.dm 71"/></a></aside>
+        </h3>
+        <p>Prefer not to use this one too often</p><h3 id="proc/get_turf_above"><aside class="declaration">proc </aside>get_turf_above<aside>(/<a href="turf.html">turf</a>/T) 
+        
+    
+            <a href="https://github.com/UPTherac/Gameserver/blob/488a859807ce909376ee54e24fe157607f5860e1/code/modules/mapping/space_management/traits.dm#L62">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mapping&#x2F;space_management&#x2F;traits.dm 62"/></a></aside>
+        </h3>
+        <p>Attempt to get the turf above the provided one according to Z traits</p><h3 id="proc/get_turf_below"><aside class="declaration">proc </aside>get_turf_below<aside>(/<a href="turf.html">turf</a>/T) 
+        
+    
+            <a href="https://github.com/UPTherac/Gameserver/blob/488a859807ce909376ee54e24fe157607f5860e1/code/modules/mapping/space_management/traits.dm#L53">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mapping&#x2F;space_management&#x2F;traits.dm 53"/></a></aside>
+        </h3>
+        <p>Attempt to get the turf below the provided one according to Z traits</p><h3 id="proc/initialize_biomes"><aside class="declaration">proc </aside>initialize_biomes<aside>() 
+        
+    
+            <a href="https://github.com/UPTherac/Gameserver/blob/488a859807ce909376ee54e24fe157607f5860e1/code/controllers/subsystem/mapping.dm#L593">
+        <img src="git.png" width="16" height="16" title="code&#x2F;controllers&#x2F;subsystem&#x2F;mapping.dm 593"/></a></aside>
+        </h3>
+        <p>Initialize all biomes, assoc as type || instance</p><h3 id="proc/level_has_all_traits"><aside class="declaration">proc </aside>level_has_all_traits<aside>(z, /list/traits) 
+        
+    
+            <a href="https://github.com/UPTherac/Gameserver/blob/488a859807ce909376ee54e24fe157607f5860e1/code/modules/mapping/space_management/traits.dm#L26">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mapping&#x2F;space_management&#x2F;traits.dm 26"/></a></aside>
+        </h3>
+        <p>Check if levels[z] has all of the specified traits</p><h3 id="proc/level_has_any_trait"><aside class="declaration">proc </aside>level_has_any_trait<aside>(z, /list/traits) 
+        
+    
+            <a href="https://github.com/UPTherac/Gameserver/blob/488a859807ce909376ee54e24fe157607f5860e1/code/modules/mapping/space_management/traits.dm#L19">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mapping&#x2F;space_management&#x2F;traits.dm 19"/></a></aside>
+        </h3>
+        <p>Check if levels[z] has any of the specified traits</p><h3 id="proc/level_trait"><aside class="declaration">proc </aside>level_trait<aside>(z, trait) 
+        
+    
+            <a href="https://github.com/UPTherac/Gameserver/blob/488a859807ce909376ee54e24fe157607f5860e1/code/modules/mapping/space_management/traits.dm#L2">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mapping&#x2F;space_management&#x2F;traits.dm 2"/></a></aside>
+        </h3>
+        <p>Look up levels[z].traits[trait]</p><h3 id="proc/levels_by_any_trait"><aside class="declaration">proc </aside>levels_by_any_trait<aside>(/list/traits) 
+        
+    
+            <a href="https://github.com/UPTherac/Gameserver/blob/488a859807ce909376ee54e24fe157607f5860e1/code/modules/mapping/space_management/traits.dm#L42">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mapping&#x2F;space_management&#x2F;traits.dm 42"/></a></aside>
+        </h3>
+        <p>Get a list of all z which have any of the specified traits</p><h3 id="proc/levels_by_trait"><aside class="declaration">proc </aside>levels_by_trait<aside>(trait) 
+        
+    
+            <a href="https://github.com/UPTherac/Gameserver/blob/488a859807ce909376ee54e24fe157607f5860e1/code/modules/mapping/space_management/traits.dm#L33">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mapping&#x2F;space_management&#x2F;traits.dm 33"/></a></aside>
+        </h3>
+        <p>Get a list of all z which have the specified trait</p><h3 id="proc/setup_ruins"><aside class="declaration">proc </aside>setup_ruins<aside>() 
+        
+    
+            <a href="https://github.com/UPTherac/Gameserver/blob/488a859807ce909376ee54e24fe157607f5860e1/code/controllers/subsystem/mapping.dm#L115">
+        <img src="git.png" width="16" height="16" title="code&#x2F;controllers&#x2F;subsystem&#x2F;mapping.dm 115"/></a></aside>
+        </h3>
+        <p>##setup_ruins</p>
+<p>Sets up all of the ruins to be spawned</p></main>
+<footer>
+    pariah.dme
+    <a href="https://github.com/UPTherac/Gameserver/tree/488a859807ce909376ee54e24fe157607f5860e1">488a859</a>
+        (master) &mdash; <a href="https://github.com/SpaceManiac/SpacemanDMM/blob/master/src/dmdoc/README.md">dmdoc 1.4.1</a></footer>
+</body>
+</html>
