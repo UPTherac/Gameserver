@@ -1,6 +1,6 @@
 
 
-/mob/living/carbon/apply_damage(damage, damagetype = BRUTE, def_zone = null, blocked = FALSE, forced = FALSE, spread_damage = FALSE, wound_bonus = 0, bare_wound_bonus = 0, sharpness = NONE, attack_direction = null)
+/mob/living/carbon/apply_damage(damage, damagetype = BRUTE, def_zone = null, blocked = FALSE, forced = FALSE, spread_damage = FALSE, wound_bonus = 0, bare_wound_bonus = 0, sharpness = NONE, attack_direction = null, cap_loss_at = 0)
 	SEND_SIGNAL(src, COMSIG_MOB_APPLY_DAMAGE, damage, damagetype, def_zone)
 	var/hit_percent = (100-blocked)/100
 	if(!damage || (!forced && hit_percent <= 0))
@@ -95,9 +95,8 @@
 
 /mob/living/carbon/getStaminaLoss()
 	. = 0
-	for(var/X in bodyparts)
-		var/obj/item/bodypart/BP = X
-		. += round(BP.stamina_dam * BP.stam_damage_coeff, DAMAGE_PRECISION)
+	for(var/obj/item/bodypart/BP as anything in bodyparts)
+		. += round(BP.stamina_dam, DAMAGE_PRECISION)
 
 /mob/living/carbon/adjustStaminaLoss(amount, updating_health = TRUE, forced = FALSE)
 	if(!forced && (status_flags & GODMODE))
@@ -238,6 +237,7 @@
 		stamina = round(stamina - (stamina_was - picked.stamina_dam), DAMAGE_PRECISION)
 
 		parts -= picked
+
 	if(updating_health)
 		updatehealth()
 		update_stamina()
@@ -248,27 +248,59 @@
 /mob/living/carbon/take_overall_damage(brute = 0, burn = 0, stamina = 0, updating_health = TRUE, required_status)
 	if(status_flags & GODMODE)
 		return //godmode
-
 	var/list/obj/item/bodypart/parts = get_damageable_bodyparts(required_status)
 	var/update = 0
-	while(parts.len && (brute > 0 || burn > 0 || stamina > 0))
+	while(length(parts) && (brute > 0 || burn > 0))
 		var/obj/item/bodypart/picked = pick(parts)
 		var/brute_per_part = round(brute/parts.len, DAMAGE_PRECISION)
 		var/burn_per_part = round(burn/parts.len, DAMAGE_PRECISION)
-		var/stamina_per_part = round(stamina/parts.len, DAMAGE_PRECISION)
 
 		var/brute_was = picked.brute_dam
 		var/burn_was = picked.burn_dam
-		var/stamina_was = picked.stamina_dam
 
 
-		update |= picked.receive_damage(brute_per_part, burn_per_part, stamina_per_part, FALSE, required_status, wound_bonus = CANT_WOUND) // disabling wounds from these for now cuz your entire body snapping cause your heart stopped would suck
+		update |= picked.receive_damage(brute_per_part, burn_per_part, 0, FALSE, required_status, wound_bonus = CANT_WOUND) // disabling wounds from these for now cuz your entire body snapping cause your heart stopped would suck
 
 		brute = round(brute - (picked.brute_dam - brute_was), DAMAGE_PRECISION)
 		burn = round(burn - (picked.burn_dam - burn_was), DAMAGE_PRECISION)
-		stamina = round(stamina - (picked.stamina_dam - stamina_was), DAMAGE_PRECISION)
 
 		parts -= picked
+
+
+	///Okay, so, what the fuck is going on here, you might be asking?
+	if(stamina)
+		//Cut the bodyparts list because its built on false assumptions. It only checks physical damage capacity and not stamina capacity.
+		parts.Cut()
+		//Build our own list of bodyparts which are capable of holding stamina damage still.
+		for(var/obj/item/bodypart/BP as anything in bodyparts)
+			if(BP.stamina_dam < BP.max_stamina_damage)
+				parts += BP
+
+		///We need two lists to ensure a pseudo-even distribution of damage.
+		///This is our list of all parts that can still hold some more stamina damage.
+		var/list/obj/item/bodypart/not_full = parts.Copy()
+		while(stamina)
+			///Copy the total parts list. This is necessary because later we remove instances from this list during the loop.
+			parts = not_full.Copy()
+			///If all of our bodyparts are full on stamina, stop the loop.
+			if(!length(parts))
+				break
+
+			while(length(parts))
+				//Create a "share" of the current stamina damage pool
+				var/damage_share = round(stamina/length(parts), DAMAGE_PRECISION)
+				//Pick and take a part from the eligible parts list.
+				var/obj/item/bodypart/picked = pick_n_take(parts)
+				//If the part is full on stamina damage, remove it from the master list so it doesn't get re-added
+				if(picked.stamina_dam >= picked.max_stamina_damage)
+					not_full -= picked
+					continue
+				///Distribute the damage share to this limb, record how much was actually used.
+				var/stamina_was = picked.stamina_dam
+				update |= picked.receive_damage(0, 0, damage_share, FALSE, required_status, wound_bonus = CANT_WOUND)
+				stamina = round(stamina - (picked.stamina_dam - stamina_was), DAMAGE_PRECISION)
+				parts -= picked
+
 	if(updating_health)
 		updatehealth()
 	if(update)

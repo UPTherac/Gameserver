@@ -17,6 +17,11 @@
 	/// The mob's current health.
 	var/health = MAX_LIVING_HEALTH
 
+	///How much stamina is recovered every SSmob tick (2 seconds)
+	var/stamina_recovery = 5
+	///The cached maximum stamina of this mob
+	var/maximum_stamina_loss = STAMINA_HUMAN_MAX
+
 	//Damage related vars, NOTE: THESE SHOULD ONLY BE MODIFIED BY PROCS
 	var/bruteloss = 0 ///Brutal damage caused by brute force (punching, being clubbed by a toolbox ect... this also accounts for pressure damage)
 	var/oxyloss = 0 ///Oxygen depravation damage (no air in lungs)

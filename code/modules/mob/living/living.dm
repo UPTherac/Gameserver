@@ -841,6 +841,7 @@
 	extinguish_mob()
 	set_drowsyness(0)
 	stop_sound_channel(CHANNEL_HEARTBEAT)
+	exit_stamina_stun()
 	SEND_SIGNAL(src, COMSIG_LIVING_POST_FULLY_HEAL, admin_revive)
 
 
@@ -1986,12 +1987,15 @@ GLOBAL_LIST_EMPTY(fire_appearances)
 		if(CONSCIOUS)
 			if(stat >= UNCONSCIOUS)
 				ADD_TRAIT(src, TRAIT_IMMOBILIZED, TRAIT_KNOCKEDOUT)
-			ADD_TRAIT(src, TRAIT_HANDS_BLOCKED, STAT_TRAIT)
-			ADD_TRAIT(src, TRAIT_INCAPACITATED, STAT_TRAIT)
-			ADD_TRAIT(src, TRAIT_FLOORED, STAT_TRAIT)
+				ADD_TRAIT(src, TRAIT_HANDS_BLOCKED, STAT_TRAIT)
+				ADD_TRAIT(src, TRAIT_INCAPACITATED, STAT_TRAIT)
+				ADD_TRAIT(src, TRAIT_FLOORED, STAT_TRAIT)
 		if(SOFT_CRIT)
 			if(stat >= UNCONSCIOUS)
 				ADD_TRAIT(src, TRAIT_IMMOBILIZED, TRAIT_KNOCKEDOUT) //adding trait sources should come before removing to avoid unnecessary updates
+				ADD_TRAIT(src, TRAIT_HANDS_BLOCKED, STAT_TRAIT)
+				ADD_TRAIT(src, TRAIT_INCAPACITATED, STAT_TRAIT)
+				ADD_TRAIT(src, TRAIT_FLOORED, STAT_TRAIT)
 			if(pulledby)
 				REMOVE_TRAIT(src, TRAIT_IMMOBILIZED, PULLED_WHILE_SOFTCRIT_TRAIT)
 		if(UNCONSCIOUS)
@@ -2003,6 +2007,8 @@ GLOBAL_LIST_EMPTY(fire_appearances)
 		if(DEAD)
 			remove_from_dead_mob_list()
 			add_to_alive_mob_list()
+
+
 	switch(stat) //Current stat.
 		if(CONSCIOUS)
 			if(. >= UNCONSCIOUS)
@@ -2016,6 +2022,10 @@ GLOBAL_LIST_EMPTY(fire_appearances)
 				ADD_TRAIT(src, TRAIT_IMMOBILIZED, PULLED_WHILE_SOFTCRIT_TRAIT) //adding trait sources should come before removing to avoid unnecessary updates
 			if(. >= UNCONSCIOUS)
 				REMOVE_TRAIT(src, TRAIT_IMMOBILIZED, TRAIT_KNOCKEDOUT)
+				REMOVE_TRAIT(src, TRAIT_HANDS_BLOCKED, STAT_TRAIT)
+				REMOVE_TRAIT(src, TRAIT_INCAPACITATED, STAT_TRAIT)
+				REMOVE_TRAIT(src, TRAIT_FLOORED, STAT_TRAIT)
+				REMOVE_TRAIT(src, TRAIT_CRITICAL_CONDITION, STAT_TRAIT)
 			ADD_TRAIT(src, TRAIT_CRITICAL_CONDITION, STAT_TRAIT)
 		if(UNCONSCIOUS)
 			if(. != HARD_CRIT)
@@ -2326,3 +2336,11 @@ GLOBAL_LIST_EMPTY(fire_appearances)
 		return
 
 	adjust_timed_status_effect(duration SECONDS, impediments[chosen])
+
+///Take away stamina from an attack being thrown.
+/mob/living/proc/stamina_swing(cost)
+	var/user_loss = src.getStaminaLoss()
+	if((STAMINA_MAXIMUM_TO_SWING - user_loss - cost) > 0)
+		src.adjustStaminaLoss(cost)
+	else
+		src.adjustStaminaLoss(STAMINA_MAXIMUM_TO_SWING - user_loss)

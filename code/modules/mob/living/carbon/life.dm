@@ -83,7 +83,7 @@
 	var/datum/gas_mixture/breath
 
 	if(!getorganslot(ORGAN_SLOT_BREATHING_TUBE))
-		if(health <= HEALTH_THRESHOLD_FULLCRIT || (pulledby?.grab_state >= GRAB_KILL) || (lungs?.organ_flags & ORGAN_FAILING))
+		if(health <= crit_threshold || (pulledby?.grab_state >= GRAB_KILL) || (lungs?.organ_flags & ORGAN_FAILING))
 			losebreath++  //You can't breath at all when in critical or when being choked, so you're going to miss a breath
 
 		else if(health <= crit_threshold)
@@ -154,13 +154,13 @@
 
 	var/obj/item/organ/lungs = getorganslot(ORGAN_SLOT_LUNGS)
 	if(!lungs)
-		adjustOxyLoss(2)
+		adjustOxyLoss(4)
 
 	//CRIT
 	if(!breath || (breath.total_moles == 0) || !lungs)
 		if(reagents.has_reagent(/datum/reagent/medicine/epinephrine, needs_metabolizing = TRUE) && lungs)
 			return FALSE
-		adjustOxyLoss(1)
+		adjustOxyLoss(2)
 
 		failed_last_breath = TRUE
 		throw_alert(ALERT_NOT_ENOUGH_OXYGEN, /atom/movable/screen/alert/not_enough_oxy)
@@ -342,8 +342,12 @@
 
 /mob/living/carbon/proc/handle_bodyparts(delta_time, times_fired)
 	if(stam_regen_start_time <= world.time)
-		if(HAS_TRAIT_FROM(src, TRAIT_INCAPACITATED, STAMINA))
+		if(HAS_TRAIT_FROM(src, TRAIT_INCAPACITATED, STAMINA) || HAS_TRAIT_FROM(src, TRAIT_EXHAUSTED, STAMINA))
 			. |= BODYPART_LIFE_UPDATE_HEALTH //make sure we remove the stamcrit
+		//Heal bodypart stamina damage
+		if(staminaloss > 0)
+			adjustStaminaLoss(-(stamina_recovery * (delta_time * 0.5)), FALSE)
+
 	for(var/obj/item/bodypart/limb as anything in bodyparts)
 		. |= limb.on_life(delta_time, times_fired)
 

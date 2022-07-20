@@ -518,11 +518,11 @@
 	var/total_burn = 0
 	var/total_brute = 0
 	var/total_stamina = 0
-	for(var/X in bodyparts) //hardcoded to streamline things a bit
-		var/obj/item/bodypart/BP = X
+	for(var/obj/item/bodypart/BP as anything in bodyparts) //hardcoded to streamline things a bit
 		total_brute += (BP.brute_dam * BP.body_damage_coeff)
 		total_burn += (BP.burn_dam * BP.body_damage_coeff)
-		total_stamina += (BP.stamina_dam * BP.stam_damage_coeff)
+		total_stamina += (BP.stamina_dam)
+
 	set_health(round(maxHealth - getOxyLoss() - getToxLoss() - getCloneLoss() - total_burn - total_brute, DAMAGE_PRECISION))
 	staminaloss = round(total_stamina, DAMAGE_PRECISION)
 	update_stat()
@@ -537,16 +537,14 @@
 
 /mob/living/carbon/update_stamina()
 	var/stam = getStaminaLoss()
-	if(stam > DAMAGE_PRECISION && (maxHealth - stam) <= crit_threshold)
-		if (!stat)
-			enter_stamcrit()
-	else if(HAS_TRAIT_FROM(src, TRAIT_INCAPACITATED, STAMINA))
-		REMOVE_TRAIT(src, TRAIT_INCAPACITATED, STAMINA)
-		REMOVE_TRAIT(src, TRAIT_IMMOBILIZED, STAMINA)
-		REMOVE_TRAIT(src, TRAIT_FLOORED, STAMINA)
-		filters -= FILTER_STAMINACRIT //PARIAH EDIT
-	else
-		return
+	var/is_exhausted = HAS_TRAIT_FROM(src, TRAIT_EXHAUSTED, STAMINA)
+	var/is_stam_stunned = HAS_TRAIT_FROM(src, TRAIT_INCAPACITATED, STAMINA)
+	if((stam >= (src.maximum_stamina_loss + STAMINA_EXHAUSTION_THRESHOLD_MODIFIER)) && !is_exhausted)
+		ADD_TRAIT(src, TRAIT_EXHAUSTED, STAMINA)
+	if((stam >= (src.maximum_stamina_loss + STAMINA_STUN_THRESHOLD_MODIFIER)) && !is_stam_stunned && stat <= SOFT_CRIT)
+		stamina_stun()
+	if(is_exhausted && (stam < (src.maximum_stamina_loss + STAMINA_EXHAUSTION_THRESHOLD_MODIFIER)))
+		REMOVE_TRAIT(src, TRAIT_EXHAUSTED, STAMINA)
 	update_stamina_hud()
 
 /mob/living/carbon/update_sight()
@@ -665,40 +663,40 @@
 	if(health <= crit_threshold)
 		var/severity = 0
 		switch(health)
-			if(-20 to -10)
+			if(-120 to -110)
 				severity = 1
-			if(-30 to -20)
+			if(-130 to -120)
 				severity = 2
-			if(-40 to -30)
+			if(-140 to -130)
 				severity = 3
-			if(-50 to -40)
+			if(-150 to -140)
 				severity = 4
-			if(-50 to -40)
+			if(-150 to -140)
 				severity = 5
-			if(-60 to -50)
+			if(-160 to -150)
 				severity = 6
-			if(-70 to -60)
+			if(-170 to -160)
 				severity = 7
-			if(-90 to -70)
+			if(-190 to -170)
 				severity = 8
-			if(-95 to -90)
+			if(-195 to -190)
 				severity = 9
-			if(-INFINITY to -95)
+			if(-INFINITY to -195)
 				severity = 10
-		if(stat != HARD_CRIT)
+		if(stat >= UNCONSCIOUS)
 			var/visionseverity = 4
 			switch(health)
-				if(-8 to -4)
+				if(-115 to -100)
 					visionseverity = 5
-				if(-12 to -8)
+				if(-130 to -115)
 					visionseverity = 6
-				if(-16 to -12)
+				if(-145 to -130)
 					visionseverity = 7
-				if(-20 to -16)
+				if(-160 to -145)
 					visionseverity = 8
-				if(-24 to -20)
+				if(-175 to -160)
 					visionseverity = 9
-				if(-INFINITY to -24)
+				if(-INFINITY to -175)
 					visionseverity = 10
 			overlay_fullscreen("critvision", /atom/movable/screen/fullscreen/crit/vision, visionseverity)
 		else
@@ -779,22 +777,22 @@
 /mob/living/carbon/update_stamina_hud(shown_stamina_amount)
 	if(!client || !hud_used?.stamina)
 		return
-	if(stat == DEAD || IsStun() || IsParalyzed() || IsImmobilized() || IsKnockdown() || IsFrozen())
+	if(stat == DEAD)
 		hud_used.stamina.icon_state = "stamina6"
 	else
 		if(shown_stamina_amount == null)
-			shown_stamina_amount = health - getStaminaLoss() - crit_threshold
-		if(shown_stamina_amount >= health)
+			shown_stamina_amount = src.maximum_stamina_loss - getStaminaLoss()
+		if(shown_stamina_amount >= src.maximum_stamina_loss)
 			hud_used.stamina.icon_state = "stamina0"
-		else if(shown_stamina_amount > health*0.8)
+		else if(shown_stamina_amount > src.maximum_stamina_loss*0.8)
 			hud_used.stamina.icon_state = "stamina1"
-		else if(shown_stamina_amount > health*0.6)
+		else if(shown_stamina_amount > src.maximum_stamina_loss*0.6)
 			hud_used.stamina.icon_state = "stamina2"
-		else if(shown_stamina_amount > health*0.4)
+		else if(shown_stamina_amount > src.maximum_stamina_loss*0.4)
 			hud_used.stamina.icon_state = "stamina3"
-		else if(shown_stamina_amount > health*0.2)
+		else if(shown_stamina_amount > src.maximum_stamina_loss*0.2)
 			hud_used.stamina.icon_state = "stamina4"
-		else if(shown_stamina_amount > 0)
+		else if(shown_stamina_amount > 1)
 			hud_used.stamina.icon_state = "stamina5"
 		else
 			hud_used.stamina.icon_state = "stamina6"
